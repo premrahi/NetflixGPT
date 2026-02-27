@@ -8,6 +8,7 @@ const Login = () => {
 
   const email = useRef(null);
   const password = useRef(null);
+  const name = useRef(null) ;
 
   const toggleSignINForm = () => {
     setSignInState(!signInState);
@@ -15,7 +16,7 @@ const Login = () => {
 
   const handleBtnClick = () => {
     // validation
-    const msg = validate(email.current.value , password.current.value);
+    const msg = validate(email.current.value , password.current.value,name.current.value);
     setErrorMessage(msg) ;
   };
 
@@ -37,6 +38,7 @@ const Login = () => {
             </h1>
             {signInState && (
               <input
+              ref={name} 
                 type="text"
                 placeholder="Name"
                 className="m-2 p-2  bg-gray-700 rounded-md w-3/3"
