@@ -1,14 +1,16 @@
 import { useState, useRef, use } from "react";
 import Header from "./Header";
 import { validate } from "../utils/Validate";
+import {  createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
 
 const Login = () => {
   const [signInState, setSignInState] = useState(true);
-  const [errorMessage ,setErrorMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const email = useRef(null);
   const password = useRef(null);
-  const name = useRef(null) ;
+  const name = useRef(null);
 
   const toggleSignINForm = () => {
     setSignInState(!signInState);
@@ -16,8 +18,42 @@ const Login = () => {
 
   const handleBtnClick = () => {
     // validation
-    const msg = validate(email.current.value , password.current.value,name.current.value);
-    setErrorMessage(msg) ;
+    const msg = validate(
+      email.current.value,
+      password.current.value,
+      name.current.value,
+    );
+    setErrorMessage(msg);
+    if (msg) return; // if the msg exist it will be shown and the code will just return from here.
+
+    // sign up / sigh in logic
+
+    if (!signInState) {
+      //logic for sign up
+
+    
+      createUserWithEmailAndPassword(
+        auth,
+        email.current.value,
+        password.current.value,
+      )
+        .then((userCredential) => {
+          // Signed up
+          const user = userCredential.user;
+          console.log(user);
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          // ..
+
+          setErrorMessage(errorCode+"-"+errorMessage) ;
+        });
+    }
+    else {
+      // logic for sing in
+    }
   };
 
   return (
@@ -31,14 +67,17 @@ const Login = () => {
           ></img>
         </div>
 
-        <form onSubmit={(e)=>e.preventDefault() } className="absolute w-3/12 my-28 bg-opacity-80 bg-black mx-auto left-0 right-0 text-white ">
+        <form
+          onSubmit={(e) => e.preventDefault()}
+          className="absolute w-3/12 my-28 bg-opacity-80 bg-black mx-auto left-0 right-0 text-white "
+        >
           <div className="m-2 p-8 flex flex-col">
             <h1 className="text-white  p-4 text-3xl font-semibold">
               {signInState ? "Sign In" : "Sign Up"}
             </h1>
-            {signInState && (
+            {!signInState && (
               <input
-              ref={name} 
+                ref={name}
                 type="text"
                 placeholder="Name"
                 className="m-2 p-2  bg-gray-700 rounded-md w-3/3"
