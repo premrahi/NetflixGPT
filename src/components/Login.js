@@ -1,7 +1,10 @@
 import { useState, useRef, use } from "react";
 import Header from "./Header";
 import { validate } from "../utils/Validate";
-import {  createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import { auth } from "../utils/firebase";
 
 const Login = () => {
@@ -17,42 +20,31 @@ const Login = () => {
   };
 
   const handleBtnClick = () => {
-    // validation
-    const msg = validate(
-      email.current.value,
-      password.current.value,
-      name.current.value,
-    );
-    setErrorMessage(msg);
-    if (msg) return; // if the msg exist it will be shown and the code will just return from here.
+    const emailValue = email.current?.value;
+    const passwordValue = password.current?.value;
+    const nameValue = signInState ? "" : name.current?.value;
 
-    // sign up / sigh in logic
+    const msg = validate(emailValue, passwordValue, nameValue);
+
+    setErrorMessage(msg);
+    if (msg) return;
 
     if (!signInState) {
-      //logic for sign up
-
-    
-      createUserWithEmailAndPassword(
-        auth,
-        email.current.value,
-        password.current.value,
-      )
+      createUserWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
-          // Signed up
-          const user = userCredential.user;
-          console.log(user);
-          // ...
+          console.log(userCredential.user);
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ..
-
-          setErrorMessage(errorCode+"-"+errorMessage) ;
+          setErrorMessage(error.code + "-" + error.message);
         });
-    }
-    else {
-      // logic for sing in
+    } else {
+      signInWithEmailAndPassword(auth, emailValue, passwordValue)
+        .then((userCredential) => {
+          console.log(userCredential.user);
+        })
+        .catch((error) => {
+          setErrorMessage(error.code + "-" + error.message);
+        });
     }
   };
 
@@ -93,7 +85,7 @@ const Login = () => {
             <input
               type="password"
               ref={password}
-              placeholder="set password"
+              placeholder="password"
               className="m-2 p-2  bg-gray-700 rounded-md w-3/3"
             ></input>
             <p className="text-red-700 font-semibold p-2">{errorMessage}</p>
