@@ -6,7 +6,11 @@
 - routing
 - Login Form
 - form validation / useRef hook
-
+- firebase setUP
+- deployed our app to production
+- created SignUp user account
+- implemented signIn user API
+- created Redux store with UserSlice
 
 # Features 
 - login/signUP
