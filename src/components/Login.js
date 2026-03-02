@@ -4,11 +4,15 @@ import { validate } from "../utils/Validate";
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  updateProfile,
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
+import { addUser } from "../utils/userSlice";
+import { useDispatch } from "react-redux";
 
 const Login = () => {
+  const dispatch = useDispatch() ;
   const [signInState, setSignInState] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
@@ -35,6 +39,25 @@ const Login = () => {
       createUserWithEmailAndPassword(auth, emailValue, passwordValue)
         .then((userCredential) => {
           // console.log(userCredential.user);
+
+          const user = userCredential.user ;
+          updateProfile(user, {
+            displayName: nameValue,
+            photoURL: "https://avatars.githubusercontent.com/u/139723538?v=4",
+          })
+            .then(() => {
+              const {uid ,email ,displayName , photoURL} = auth.currentUser ; 
+              // auth.current user gets the value form updated user. just "user" has no updated values yet.
+              dispatch(
+                addUser({uid : uid , email : email , displayName : displayName , photoURL : photoURL}) 
+              )
+              // Profile updated!
+              // ...
+            })
+            .catch((error) => {
+              setErrorMessage(error.message) ;
+            });
+
           navigate("/browse");
         })
         .catch((error) => {
