@@ -19,6 +19,13 @@
 - added hardCoded values to constant file.  
 - registered for TMDB api & create an app and got API token.
 - get data form TMDB now playing movie list API.
+- created custom hook for nowPlayingMovies.
+- created a movie slice and updated the store
+- planing for mainContainer and secondaryContainer
+- created custom hook for fetching trailer data .
+- updated the store with trailer data in movieSlice
+- embedded youtube video with autoPlay and mute
+- set the trailer video at background
 
 # Features 
 - login/signUP
