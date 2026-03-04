@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { useEffect } from "react";
+import gpt from "../assets/gpt.png";
+import net from "../assets/net-gpt-logo.png";
 import { LOGO_URL, USER_IMG } from "../utils/constant";
 
 const Header = () => {
@@ -43,32 +45,40 @@ const Header = () => {
     });
   }, []);
 
+  const handleGptClick = () =>{
+    // toggle gpt search
+  }
+
   return (
     <div className="absolute flex z-20 w-screen justify-between bg-gradient-to-b from-black">
-      <img
-        src={LOGO_URL}
-        alt="logo"
-        className="w-48  mx-20  my-4"
-      ></img>
-      {user && (
-        <div className="flex">
-          {user ? (
-            <img src={user.photoURL} alt="user" className="w-12 h-12  mt-8" />
-          ) : (
+      <div>
+        <img src={LOGO_URL} alt="logo" className="w-48  mx-20  my-4"></img>
+      </div>
+
+      <div>
+        {user && (
+          <div className="flex">
             <img
-              src={USER_IMG}
-              alt="user"
-              className="w-12 h-12  mt-8"
-            />
-          )}
-          <button
-            className="border text-white h-12 rounded-lg p-2  mt-8 mx-6"
-            onClick={() => signOutFunc()}
-          >
-            Sign Out
-          </button>
-        </div>
-      )}
+              className=" text-white h-12 cursor-pointer  p-2  mt-8 mx-6 hover:scale-150 transition-transform delay-300"
+               alt="gpt_icon"
+               onClick={() => handleGptClick()}
+              src={gpt}
+            ></img>
+
+            {user ? (
+              <img src={user.photoURL} alt="user" className="w-12 h-12  mt-8 cursor-pointer hover:scale-105  transition-transform delay-300" />
+            ) : (
+              <img src={USER_IMG} alt="user" className="w-12 h-12 cursor-pointer mt-8  hover:scale-105 transition-transform delay-300" />
+            )}
+            <button
+              className="border text-white h-12 cursor-pointer rounded-lg p-2  mt-8 mx-6  hover:scale-105 transition-transform delay-300"
+              onClick={() => signOutFunc()}
+            >
+              Sign Out
+            </button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

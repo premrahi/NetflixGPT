@@ -26,6 +26,14 @@
 - updated the store with trailer data in movieSlice
 - embedded youtube video with autoPlay and mute
 - set the trailer video at background
+- build secondary component
+- build movie list
+- build movie card 
+- TMDB image CDN url
+- made the browser page amazing with tailwind CSS
+- usePopularMovies custom hook
+- gpt search feature
+
 
 # Features 
 - login/signUP

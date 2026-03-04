@@ -1,6 +1,6 @@
 const BgTitle = ({ title, overview }) => {
   return (
-    <div className="px-24 pt-60 z-10 absolute text-white bg-gradient-to-r from-black w-screen aspect-video bg-opacity-30">
+    <div className="px-24 pt-60 z-10 absolute text-white bg-gradient-to-r from-black w-full aspect-video bg-opacity-30">
       
         <h1 className="text-6xl font-bold">{title}</h1>
         <p className="py-6 text-lg w-2/5">{overview}</p>
