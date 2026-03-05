@@ -6,11 +6,11 @@ const BgTitle = ({ title, overview }) => {
         <p className="py-6 text-lg w-2/5">{overview}</p>
 
         <div>
-          <button className=" px-5 py-2 w-32 text-black rounded-md font-semibold bg-white  m-2 hover:bg-gray-200  ">
+          <button className=" px-5 py-2 w-32 text-black rounded-md font-semibold bg-white  m-2 hover:bg-gray-200 hover:scale-105 transition-transform delay-100">
             {" "}
             Play
           </button>
-          <button className=" px-5 py-2 text-black w-32 rounded-md font-semibold bg-gray-500  m-2 opacity-80 hover:bg-gray-700">
+          <button className=" px-5 py-2 text-black w-32 rounded-md font-semibold bg-gray-500  m-2 opacity-80 hover:bg-gray-700 hover:scale-105 transition-transform delay-100">
             {" "}
             more info
           </button>
