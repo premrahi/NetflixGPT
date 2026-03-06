@@ -13,7 +13,7 @@ const MainContainer = () => {
 
     const {original_title ,overview ,id} = mainMovie ;
 
-    return <div>
+    return <div className="">
         <BgTitle title={original_title} overview={overview}/>        
         <BgMovie movieID={id}/>
     </div>

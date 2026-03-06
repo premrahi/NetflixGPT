@@ -60,7 +60,7 @@ const GptSearchBar = () => {
   return (
     <div>
       <form
-        className="absolute mt-20 left-1/2 -translate-x-1/2 w-2/3 z-30 text-center"
+        className="absolute md:mt-20 mt-72 sm:mt-60   left-1/2 -translate-x-1/2 w-2/3 z-30 text-center"
         onSubmit={(e) => e.preventDefault()}
       >
         <input
