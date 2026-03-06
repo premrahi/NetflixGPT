@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux";
 import { API_OPTIONS } from "../utils/constant";
-import { topRatedMovies } from "../utils/movieSlice";
+import { popularMovies } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 const usePopularMovies = () => {
@@ -13,8 +13,8 @@ const usePopularMovies = () => {
     );
 
     const json = await data.json();
-    dispatch(topRatedMovies(json.results));
-    // console.log(json.results);
+    dispatch(popularMovies(json.results));
+    // console.log(json);
   };
 
   useEffect(() => {

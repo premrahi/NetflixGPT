@@ -3,15 +3,15 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import gpt from "../assets/gpt.png";
 import net from "../assets/net-gpt-logo.png";
 import N_LOGO from "../assets/N_LOGO.png";
 import { LOGO_URL, SUPPORTED_LANGUAGES, USER_IMG } from "../utils/constant";
 import { toggleGptSearchView } from "../utils/GptSlice";
+import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
-  const [btnLogo, setBtnLogo] = useState();
   const showToggle = useSelector((store) => store.gpt.showGptSearch);
 
   const navigate = useNavigate();
@@ -55,8 +55,12 @@ const Header = () => {
     dispatch(toggleGptSearchView());
   };
 
+  const handleLangChange = (e) => {
+    dispatch(changeLanguage(e.target.value));
+  };
+
   return (
-    <div className="absolute flex z-20 w-screen justify-between bg-gradient-to-b from-black">
+    <div className="absolute flex z-20 w-full justify-between bg-gradient-to-b from-black">
       <div>
         {/*NETFLIX HEADER LOGO*/}
         {showToggle ? (
@@ -78,7 +82,10 @@ const Header = () => {
                   onClick={() => handleGptClick()}
                   src={N_LOGO}
                 ></img>
-                <select className="text-white h-12 bg-gray-900 cursor-pointer rounded-lg p-2  mt-8 mx-6">
+                <select
+                  className="text-white h-12 bg-gray-900 cursor-pointer rounded-lg p-2  mt-8 mx-6"
+                  onChange={handleLangChange}
+                >
                   {SUPPORTED_LANGUAGES.map((lang) => (
                     <option key={lang.identifier} value={lang.identifier}>
                       {lang.name}

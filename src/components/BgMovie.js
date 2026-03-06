@@ -7,7 +7,7 @@ const BgMovie = ({ movieID }) => {
   useTrailerBG(movieID);
 
   return (
-    <div className="w-screen">
+    <div className="w-full">
         <iframe
           className="w-full aspect-video pointer-events-none"
           src={`https://www.youtube.com/embed/${trailerVideo?.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${trailerVideo?.key}`}

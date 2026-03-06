@@ -1,14 +1,14 @@
 const lang = {
     en :{
-        Search : "Search" ,
+        search : "Search" ,
         gptSearchPlaceHolder: "what would you like to watch today?" ,
     },
     hindi :{
-        Search :"खोज",
+        search :"खोज",
         gptSearchPlaceHolder : "आज आप क्या देखना चाहेंगे"
     },
     spanish:{
-        Search : "Buscar" ,
+        search : "Buscar" ,
         gptSearchPlaceHolder :"¿Qué te gustaría ver hoy?"
     },
 }

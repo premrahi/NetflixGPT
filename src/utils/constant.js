@@ -12,8 +12,8 @@ export const API_OPTIONS = {
   headers: {
     accept: "application/json",
     Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NzA5Y2M2NjA5N2ZjZDBmZGQ4NWIyY2U1OTUxNGMxNSIsIm5iZiI6MTc3MjQ1MDk3NC4zNDksInN1YiI6IjY5YTU3NDllNTFlOThjYzYyYWNjZGI1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.dLoI7EEwzV70VgpELOkV1LZXfHRCBp8ytDGJ5pioAeM",
-  },
+      `Bearer ${process.env.REACT_APP_TMDB_API}`
+  }
 };
 
 export const CDN_URL = "https://image.tmdb.org/t/p/w200";
@@ -26,3 +26,8 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "hindi", name: "Hindi" },
   { identifier: "spanish", name: "Spanish" },
 ];
+
+export const GEMINI_API = process.env.REACT_APP_GEMINI_API ; // 1st
+
+
+

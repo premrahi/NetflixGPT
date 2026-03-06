@@ -7,14 +7,17 @@ import GptSearch from "./GptSearchPage";
 import Header from "./Header";
 import MainContainer from "./MainContainer";
 import SecondaryContainer from "./SecondaryContainer";
+import usePopularMovies from "../hooks/usePopularMovies";
 
 const Browse = () => {
   const showToggle = useSelector((store) => store.gpt.showGptSearch);
 
   useNowPlayingMovies();
   useTrendingMovies();
+  usePopularMovies() ;
   useUpcomingMovies();
   useTopRatedMovies();
+  
   return (
     <div>
       <Header />
