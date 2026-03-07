@@ -21,7 +21,7 @@ const useUpcomingMovies = () => {
     if (!upcome) {
       getUpcoming();
     }
-  }, []); // ✅ dependency added
+  }, []); 
 };
 
 export default useUpcomingMovies;

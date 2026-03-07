@@ -1,9 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 import lang from "../utils/languageConstant";
 import { useRef } from "react";
-import ai from "../utils/Gemini";
 import { API_RESPONSE, setLoading } from "../utils/GptSlice";
 import { API_OPTIONS } from "../utils/constant";
+import useGeminiAI from "../hooks/useGeminiAI";
 
 const GptSearchBar = () => {
   const dispatch = useDispatch();
@@ -22,6 +22,7 @@ const GptSearchBar = () => {
     return json.results;
   };
 
+  const ai = useGeminiAI();
 
   const handleGptSearchClick = async () => {
     const query = searchText.current.value;
@@ -55,12 +56,10 @@ const GptSearchBar = () => {
     }
   };
 
-
-
   return (
     <div>
       <form
-        className="absolute md:mt-20 mt-72 sm:mt-60   left-1/2 -translate-x-1/2 w-2/3 z-30 text-center"
+        className="absolute md:mt-20 mt-72 sm:mt-72   left-1/2 -translate-x-1/2 w-2/3 z-30 text-center"
         onSubmit={(e) => e.preventDefault()}
       >
         <input

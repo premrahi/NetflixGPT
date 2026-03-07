@@ -27,7 +27,7 @@ export const SUPPORTED_LANGUAGES = [
   { identifier: "spanish", name: "Spanish" },
 ];
 
-export const GEMINI_API = process.env.REACT_APP_GEMINI_API ; // 1st
+// export const GEMINI_API = process.env.REACT_APP_GEMINI_API ; // 1st
 
 
 

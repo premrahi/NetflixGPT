@@ -43,6 +43,7 @@
 - memoization
 - added .env and secured API
 - made our site responsive
+- added functionality where user can add there own GEMINI API.
 
 
 

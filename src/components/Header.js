@@ -13,7 +13,7 @@ import { changeLanguage } from "../utils/configSlice";
 
 const Header = () => {
   const classOnNetflix = "md:absolute flex z-20 w-full justify-between bg-black md:bg-transparent md:bg-gradient-to-b md:from-black md:to-transparent flex-col md:flex-row"
-  const classOnGptPage = "absolute flex z-20 w-full justify-between bg-gradient-to-b from-black to-transparent flex-col md:flex-row"
+  const classOnGptPage = "absolute -mt-8 md:-mt-0 flex z-20 w-full justify-between bg-gradient-to-b from-black to-transparent flex-col md:flex-row"
 
 
   const showToggle = useSelector((store) => store.gpt.showGptSearch);
