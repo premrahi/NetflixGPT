@@ -4,7 +4,7 @@ export const validate = (email, password,name = "netflix user") => {
     /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\S+$).{8,20}$/.test(
       password,
     );
-    const isNameValid =  /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(name) ;
+    // const isNameValid =  /^[A-Za-z]+(?:[ '-][A-Za-z]+)*$/.test(name) ;
  
 
 

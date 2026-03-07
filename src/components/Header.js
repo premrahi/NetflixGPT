@@ -3,7 +3,7 @@ import { auth } from "../utils/firebase";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import gpt from "../assets/gpt.png";
 import net from "../assets/net-gpt-logo.png";
 import N_LOGO from "../assets/N_LOGO.png";
