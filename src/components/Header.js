@@ -64,6 +64,11 @@ const Header = () => {
   };
 
   const headerClass = showToggle ? classOnGptPage : classOnNetflix;
+
+
+  const netflixbtn = "mt-32" ;
+
+  const btnclass = showToggle ? "mt-8" : netflixbtn ;
   
 
   
@@ -124,17 +129,17 @@ const Header = () => {
               <img
                 src={user.photoURL}
                 alt="user"
-                className="w-10 h-10 mt-8 md:mt-8 cursor-pointer hover:scale-105  transition-transform delay-300"
+                className={"w-10 h-10 " + btnclass +" md:mt-8 cursor-pointer hover:scale-105  transition-transform delay-300"}
               />
             ) : (
               <img
                 src={USER_IMG}
                 alt="user"
-                className="w-10 h-10 cursor-pointer mt-8 md:mt-8  hover:scale-105 transition-transform delay-300"
+                className={"w-10 h-10 cursor-pointer"+ btnclass +" md:mt-8  hover:scale-105 transition-transform delay-300"}
               />
             )}
             <button
-              className="border text-white md:h-12 h-10 cursor-pointer rounded-lg p-2 mt-8 md:mt-8 mx-6  hover:scale-105 transition-transform delay-300"
+              className={` mx-6 border text-white md:h-12 h-10 cursor-pointer ${btnclass} rounded-lg px-2  md:mt-8  hover:scale-105 transition-transform delay-300`}
               onClick={() => signOutFunc()}
             >
               Sign Out
